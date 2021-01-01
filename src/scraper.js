@@ -12,7 +12,10 @@ export default function (channelId, show) {
         let browser
         
         try {
-            browser = await puppeteer.launch({headless: ! show})
+            browser = await puppeteer.launch({
+                headless: ! show,
+                args: ['--no-sandbox']
+            })
         } catch (e) {
             reject(e)
             return
