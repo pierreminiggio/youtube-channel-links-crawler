@@ -8,8 +8,15 @@ import puppeteer from 'puppeteer'
  */
 export default function (channelId, show) {
     return new Promise(async (resolve, reject) => {
+
+        let browser
+        
         try {
-            const browser = await puppeteer.launch({headless: ! show})
+            browser = await puppeteer.launch({headless: ! show})
+        } catch (e) {
+            reject(e)
+        }
+        try {
             const page = await browser.newPage()
             await page.goto('https://www.youtube.com/channel/' + channelId + '/about')
 
@@ -41,11 +48,7 @@ export default function (channelId, show) {
             await browser.close()
             resolve(links)
         } catch (e) {
-
-            if (browser !== undefined) {
-                await browser.close()
-            }
-            
+            await browser.close()
             reject(e)
         }
     })
