@@ -15,7 +15,9 @@ export default function (channelId, show) {
             browser = await puppeteer.launch({headless: ! show})
         } catch (e) {
             reject(e)
+            return
         }
+        
         try {
             const page = await browser.newPage()
             await page.goto('https://www.youtube.com/channel/' + channelId + '/about')
