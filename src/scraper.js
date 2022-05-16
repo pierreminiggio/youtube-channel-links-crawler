@@ -24,8 +24,8 @@ export default function (channelId, show) {
         try {
             const page = await browser.newPage()
             await page.goto('https://www.youtube.com/channel/' + channelId + '/about')
-
-            const cookieButtonSelector = 'button[aria-label="Accepter l\'utilisation de cookies et autres données aux fins décrites ci-dessus"]'
+            
+            const cookieButtonSelector = 'button[aria-label="Tout accepter"]'
 
             const cookieButtonPresent = await page.evaluate(cookieButtonSelector => {
                 return document.querySelector(cookieButtonSelector) !== null

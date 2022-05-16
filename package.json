@@ -16,7 +16,7 @@
     "homepage": "https://github.com/pierreminiggio/youtube-channel-links-crawler#readme",
     "dependencies": {
         "node": "^12.6.0",
-        "puppeteer": "^1.20.0"
+        "puppeteer": "^14.1.0"
     },
     "scripts": {
         "test": "node test.js"
